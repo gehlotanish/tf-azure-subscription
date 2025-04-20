@@ -8,13 +8,12 @@ output "subscription_name" {
   value       = azurerm_subscription.main.subscription_name
 }
 
-output "custom_role_name" {
-  description = "Name of the custom role, if one was created. Null if not created."
-  value       = var.create_custom_role ? azurerm_role_definition.custom[0].name : null
+output "custom_role_names" {
+  description = "Names of custom roles created."
+  value       = [for r in azurerm_role_definition.custom : r.name]
 }
 
-output "role_assignments" {
-  description = "Map of role assignments created for the subscription."
-  value       = azurerm_role_assignment.main
+output "builtin_role_assignments" {
+  description = "List of built-in role assignments created (if any)."
+  value       = azurerm_role_assignment.builtin
 }
-
