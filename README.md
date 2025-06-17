@@ -42,6 +42,7 @@ No modules.
 ```tf
 # Subscription Information
 subscription_name       = "My Custom EA Subscription"
+management_group_name   = "Prod"
 billing_account_name    = "1234567890"
 enrollment_account_name = "0123456"
 
