@@ -3,6 +3,12 @@ variable "subscription_name" {
   description = "The name of the Azure subscription to be created."
 }
 
+variable "management_group_name" {
+  type        = string
+  default     = ""
+  description = "The name of the Azure management group to assign."
+}
+
 variable "billing_account_name" {
   type        = string
   description = "Azure Billing Account Name."

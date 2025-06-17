@@ -20,10 +20,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_billing_account_name"></a> [billing\_account\_name](#input\_billing\_account\_name) | Azure Billing Account Name. | `string` | n/a | yes |
-| <a name="input_builtin_role_assignments"></a> [builtin\_role\_assignments](#input\_builtin\_role\_assignments) | List of built-in role assignments to apply if enabled. | <pre>list(object({<br>    principal_id         = string<br>    role_definition_name = string<br>  }))</pre> | `[]` | no |
-| <a name="input_custom_roles"></a> [custom\_roles](#input\_custom\_roles) | List of custom roles to create and auto-assign. | <pre>list(object({<br>    name          = string<br>    description   = string<br>    actions       = list(string)<br>    not_actions   = list(string)<br>    principal_ids = list(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_builtin_role_assignments"></a> [builtin\_role\_assignments](#input\_builtin\_role\_assignments) | List of built-in role assignments to apply if enabled. | <pre>list(object({<br/>    principal_id         = string<br/>    role_definition_name = string<br/>  }))</pre> | `[]` | no |
+| <a name="input_custom_roles"></a> [custom\_roles](#input\_custom\_roles) | List of custom roles to create and auto-assign. | <pre>list(object({<br/>    name          = string<br/>    description   = string<br/>    actions       = list(string)<br/>    not_actions   = list(string)<br/>    principal_ids = list(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_enable_builtin_roles"></a> [enable\_builtin\_roles](#input\_enable\_builtin\_roles) | Whether to assign built-in roles. | `bool` | `false` | no |
 | <a name="input_enrollment_account_name"></a> [enrollment\_account\_name](#input\_enrollment\_account\_name) | Azure Enrollment Account Name. | `string` | n/a | yes |
+| <a name="input_management_group_name"></a> [management\_group\_name](#input\_management\_group\_name) | The name of the Azure management group to assign. | `string` | `""` | no |
 | <a name="input_subscription_name"></a> [subscription\_name](#input\_subscription\_name) | The name of the Azure subscription to be created. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to the subscription. | `map(string)` | `{}` | no |  
 ## Outputs
@@ -94,6 +95,7 @@ builtin_role_assignments = [
 ```tf
 # Subscription Information
 subscription_name       = "My Custom EA Subscription"
+management_group_name   = "Prod"
 billing_account_name    = "1234567890"
 enrollment_account_name = "0123456"
 

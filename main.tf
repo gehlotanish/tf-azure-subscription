@@ -4,6 +4,14 @@ resource "azurerm_subscription" "main" {
   tags              = var.tags
 }
 
+
+resource "azurerm_management_group_subscription_association" "main" {
+  count = var.management_group_name != null && var.management_group_name != "" ? 1 : 0
+
+  management_group_id = data.azurerm_management_group.main[0].id
+  subscription_id     = azurerm_subscription.main.subscription_id
+}
+
 resource "azurerm_role_definition" "custom" {
   for_each = {
     for role in var.custom_roles : role.name => role
